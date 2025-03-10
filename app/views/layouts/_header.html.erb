@@ -20,14 +20,13 @@
             <div class="dropdown text-end">
                 <% if user_signed_in? %>
                 
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <%= image_tag current_user || "https://i.pravatar.cc/300", alt: "Profile Photo", width: 32, height: 32, class: "rounded-circle" %>
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-turbo="false" aria-haspopup="true">
+                    <%= image_tag "https://i.pravatar.cc/300", alt: "Profile Photo", width: 32, height: 32, class: "rounded-circle" %>
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><%= link_to "Cart", "#", class: "dropdown-item" %></li>
                     <li><%= link_to "Profile", "#", class: "dropdown-item" %></li>
-                    <li>
-                        <hr class="dropdown-divider">
+                    <li><hr class="dropdown-divider">
                     </li>
                     <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                 </ul>

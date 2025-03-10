@@ -27,9 +27,12 @@
 
 .dropdown-menu {
     z-index: 1000;
+    /* Priorité élevée */
+    display: none;
+    /* Par défaut, le menu est caché */
 }
 
-.navbar {
-    position: relative;
-    z-index: 100;
+.dropdown-menu.show {
+    display: block;
+    /* Affiche le menu quand il a la classe .show */
 }
