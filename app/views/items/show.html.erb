@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <div class="card mx-auto" style="width: 18rem;">
+    <% if @item.image.attached? %>
+      <%= image_tag @item.image, class: "card-img-top", alt: @item.title %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @item.title %></h5>
+      <p class="card-text"><%= @item.description %></p>
+      <p class="fw-bold"><%= @item.price %> €</p>
+    </div>
+  </div>
+</div>
