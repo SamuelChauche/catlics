@@ -1,2 +1,58 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="container mt-5">
+    <h1 class="mb-4">Votre Panier</h1>
+
+    <% if @cart.cart_items.any? %>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Prix unitaire</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @cart.cart_items.each do |cart_item| %>
+                <tr>
+                    <td>
+                        
+                        <% if cart_item.item.image.attached? %>
+                        <%= image_tag cart_item.item.image, alt: cart_item.item.title, class: "img-thumbnail", width: 100 %>
+                        <% end %>
+                        <%= cart_item.item.title %>
+                    </td>
+                    <td><%= number_to_currency(cart_item.item.price) %></td>
+                    <td>
+                        
+                        <%= form_with url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+                        <%= f.number_field :quantity, value: cart_item.quantity, min: 1, class: "form-control", style: "width: 80px;" %>
+                        <%= f.submit "Mettre à jour", class: "btn btn-sm btn-outline-secondary mt-2" %>
+                        <% end %>
+                    </td>
+                    <td><%= number_to_currency(cart_item.item.price * cart_item.quantity) %></td>
+                    <td>
+                        
+                        <%= button_to "Supprimer", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" } %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-end">
+        <h4>Total : <%= number_to_currency(@cart.total_price) %></h4>
+    </div>
+
+    <div class="text-end mt-4">
+        <%= link_to "Passer la commande", new_order_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Continuer vos achats", items_path, class: "btn btn-outline-secondary btn-lg" %>
+    </div>
+    <% else %>
+    <div class="alert alert-info">
+        Votre panier est vide. <%= link_to "Découvrez nos articles", items_path %>.
+    </div>
+    <% end %>
+</div>
