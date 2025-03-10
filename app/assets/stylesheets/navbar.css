@@ -1,0 +1,27 @@
+/* Exemple de classes personnalisées */
+.btn-custom-primary {
+    background-color: #FF5733;
+    /* Couleur principale du logo */
+    border-color: #F2E3BF;
+    color: white;
+}
+
+.btn-custom-primary:hover {
+    background-color: #F2E3BF;
+    /* Une teinte plus foncée pour le hover */
+    border-color: #F2E3BF;
+    color: black
+}
+
+.btn-custom-secondary {
+    background-color: #FFFFFF;
+    /* Couleur secondaire du logo */
+    border-color: #FF5733;
+    color: #FF5733;
+}
+
+.btn-custom-secondary:hover {
+    background-color: #F2E3BF;
+    /* Couleur principale au survol */
+    color: black;
+}
