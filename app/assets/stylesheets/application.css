@@ -8,3 +8,20 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.img-container {
+  width: 100%;           /* S'ajuste à la largeur du parent (la colonne) */
+  height: 200px;         /* Hauteur fixe pour toutes les images */
+  overflow: hidden;      /* Masque les parties de l'image qui dépassent */
+  transition: transform 0.3s ease;
+}
+
+.card-img-top {
+  object-fit: cover;     /* L'image couvre entièrement l'espace sans déformer */
+  width: 100%;            /* L'image s'ajuste à la largeur du conteneur */
+  height: 100%;           /* L'image s'ajuste à la hauteur du conteneur */
+}
+
+.img-container:hover {
+  transform: scale(1.1); /* Zoom de 10% au survol */
+}
