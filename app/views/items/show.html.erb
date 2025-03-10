@@ -7,6 +7,7 @@
       <h5 class="card-title"><%= @item.title %></h5>
       <p class="card-text"><%= @item.description %></p>
       <p class="fw-bold"><%= @item.price %> €</p>
+      <%= button_to 'Ajouter au panier', cart_item_path(@item.id), method: :put, class: 'add-to-cart-btn' %>
     </div>
   </div>
 </div>

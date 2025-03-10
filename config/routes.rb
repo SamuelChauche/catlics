@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :items
+  resources :cart_items, only: [ :create, :destroy ]
+  resources :items, only: [:show, :create, :new] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
   resources :carts
-  root 'items#index'
+  root "items#index"
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
