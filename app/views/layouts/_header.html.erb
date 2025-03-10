@@ -2,7 +2,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-            <a href="<%= items_path %>" class="d-flex align-items-center mb-5 mb-lg-0 link-body-emphasis text-decoration-none nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center">
+            <a href="<%= root_path %>" class="d-flex align-items-center mb-5 mb-lg-0 link-body-emphasis text-decoration-none nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center">
                 <%= image_tag "Logocatlics.png", alt: "Catlics Logo", width: 70, class: "me-1" %>
             </a>
 
@@ -30,7 +30,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                    <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                 </ul>
                 <% else %>
 
