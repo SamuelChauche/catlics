@@ -28,3 +28,13 @@ require "open-uri"
   file = URI.open(image_url)
   item.image.attach(io: file, filename: "item.jpg", content_type: "image/jpeg")
 end
+
+admin_user = User.create!(
+  email: 'mail@mail.com',
+  password: 'mailmail',
+  password_confirmation: 'mailmail'
+)
+
+puts "Utilisateur admin créé avec succès :"
+puts "Email: #{admin_user.email}"
+puts "Mot de passe: mailmail"

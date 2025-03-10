@@ -1,30 +1,43 @@
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <%= image_tag "Logocatlics.png", alt: "Catlics Logo", width: 60, class: "me-2" %>
             </a>
 
+            
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><%= link_to "Gallery", items_path, class: "nav-link px-2 link-secondary" %></li>
             </ul>
 
+            
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
 
+            
             <div class="dropdown text-end">
+                <% if user_signed_in? %>
+                
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://i.pravatar.cc/300" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>                
+                    <%= image_tag current_user.profile_photo || "https://i.pravatar.cc/300", alt: "Profile Photo", width: 32, height: 32, class: "rounded-circle" %>
+                </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Cart</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><%= link_to "Cart", "#", class: "dropdown-item" %></li>
+                    <li><%= link_to "Profile", "#", class: "dropdown-item" %></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                 </ul>
+                <% else %>
+                
+                <div class="d-flex gap-2">
+                    <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-primary" %>
+                    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+                </div>
+                <% end %>
             </div>
         </div>
     </div>
