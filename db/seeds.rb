@@ -14,7 +14,7 @@ require "open-uri"
   item = Item.create!(
     title: Faker::Creature::Cat.name,
     description: Faker::Lorem.sentence,
-    prix: rand(1..10)
+    price: rand(1..10)
   )
 
   # Ajout d'une image
