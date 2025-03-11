@@ -58,7 +58,7 @@
     </div>
 
     <div class="text-end mt-4">
-      <%= link_to "Passer la commande", root_path, class: "btn btn-custom-primary btn-lg" %>
+      <%= button_to "Passer la commande", orders_path, method: :post, class: "btn btn-custom-primary btn-lg" %>
       <%= link_to "Continuer vos achats", root_path, class: "btn btn-custom-secondary btn-lg" %>
     </div>
   <% else %>

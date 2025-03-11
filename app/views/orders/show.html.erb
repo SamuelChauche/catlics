@@ -21,14 +21,17 @@
   <tbody>
     <% @order.order_items.each do |order_item| %>
       <tr>
-        <td><%= order_item.item.name %></td>
+        <td><%= order_item.item.title %></td>
         <td><%= order_item.price %></td>
-        <%# <td><%= order_item.quantity %><%#</td> %>
-        <%# <td><%= number_to_currency(order_item.quantity * order_item.price) %><%#</td> %>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.quantity * order_item.price %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <hr>
 <%= link_to 'Retour à mes commandes', order_path, class: 'btn btn-primary' %>
-<%= button_to "Payer maintenant", checkout_create_path(order_id: @order.id, total: @order.total_price), class: "btn btn-primary", data: { turbo: false } %>
+
+<%= button_to "Payer maintenant",order_path , class: "btn btn-primary", data: { turbo: false } %>
+
+<%# //checkout_create_path(order_id: @order.id, total: @order.total_price) %>
