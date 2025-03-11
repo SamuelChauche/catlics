@@ -31,55 +31,58 @@
 
 .dropdown-menu {
     z-index: 1000;
-    /* Priorité élevée */
+
     display: none;
-    /* Par défaut, le menu est caché */
+
 }
 
 .dropdown-menu.show {
     display: block;
-    /* Affiche le menu quand il a la classe .show */
+
 }
-.btn-custom-update {
-    background-color: #E78585;
-    /* Couleur principale du logo */
-    border-color: #F2E3BF;
+
+.btn-custom {
+    width: auto;
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
-.btn-custom-update:hover {
-    background-color: #FF5757;
-    /* Une teinte plus foncée pour le hover */
-    border-color: #F2E3BF;
-    color: white
+.btn-custom:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+    color: #480707;
 }
 
-.btn-custom-cancel {
-    background-color: rgb(44, 31, 0);
-    /* Couleur principale du logo */
-    border-color: #F2E3BF;
-    color: white;
+.btn-custom:active {
+    background-image: linear-gradient(135deg, #ec6c6c 0%, #df3e3e 100%);
+    }
+
+.default{
+    background-image: linear-gradient(135deg, #ffe6e6 0%, #ffc8c8 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    color: #480707
 }
 
-.btn-custom-cancel:hover {
-    background-color: #FF5757;
-    /* Une teinte plus foncée pour le hover */
-    border-color: #F2E3BF;
-    color: white
+.basic{
+    background-image: linear-gradient(135deg, #ffa0a0 0%, #ff5757 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
 }
 
-.btn-custom-back {
-    background-color: #E68265;
-    /* Couleur principale du logo */
-    border-color: #F2E3BF;
-    color: white;
-}
-
-.btn-custom-back:hover {
-    background-color: #c45333;
-    /* Une teinte plus foncée pour le hover */
-    border-color: #F2E3BF;
-    color: rgb(255, 255, 255)
+.cancel{
+    border: 3px solid #ffa0a0;
+    color:#480707 ;
+    background-color: white;
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    font-size: 12px;
 }
 
 .gradient-custom-2 {

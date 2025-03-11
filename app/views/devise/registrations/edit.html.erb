@@ -52,18 +52,18 @@
               </div>
             
               <div class="d-grid gap-2 mb-3">
-                <%= f.submit "Update", class: "btn btn-custom-update" %>
+                <%= f.submit "Update", class: "btn-custom basic" %>
               </div>
             <% end %>
             <div class="d-grid gap-2 mb-5">
-            <%= link_to "Back", :back, class: "btn btn-custom-back" %>
+            <%= link_to "Back", :back, class: "btn-custom default" %>
           </div>
             
             <div class="d-grid gap-2 mb-3">
               Unhappy? 
                 <%= button_to "Cancel my account", registration_path(resource_name), 
                   data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, 
-                  method: :delete, class: "btn btn-custom-cancel " %>
+                  method: :delete, class: "btn-custom cancel " %>
             </div>
             
         </div>
