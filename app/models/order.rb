@@ -4,6 +4,6 @@ class Order < ApplicationRecord
   has_many :items, through: :cart_items
   def 
 
-  enenum :status, [:pending, :paid, :cancelled, :shipped, :delivered], default: :pendingum
+  enum :status, [:pending, :paid, :cancelled, :shipped, :delivered], default: :pending
 end
 
