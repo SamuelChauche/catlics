@@ -1,21 +1,23 @@
 <section class="h-100 gradient-custom-2">
+<div class="card-header bg-dark text-white text-center">
+        <h3>Edit My Profil</h3>
+    </div>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center">
       <div class="col col-lg-9 col-xl-8">
         <div class="card shadow-lg">
-          <div class="rounded-top text-white d-flex flex-row" style="background-color:rgb(44, 31, 0); height:200px;">
+          <div class="rounded-top text-white d-flex flex-row" style="background-color:#F2E3BF; height:200px;">
             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
               <%= image_tag "https://picsum.photos/seed/#{current_user.id}/150",
                 alt:"Generic placeholder image", class:"img-fluid img-thumbnail mt-4 mb-2",
                 style:"width: 150px; z-index: 1" %>
             </div>
-            <div class="ms-3" style="margin-top: 130px;">
-              <h5><%= resource.email %></h5>
-              <p>Member since: <%= resource.created_at.strftime("%B %Y") %></p>
+            <div class="ms-3" style="margin-top: 130px; color: black">
+              <h5><%= current_user.email %></h5>
+              <p>Member since: <%= current_user.created_at.strftime("%B %Y") %></p>
             </div>
           </div>
-          <div class="card-body p-4 text-black">
-            <h2 class="mb-4 text-center">Edit your profil</h2>
+          <div class="card-body p-5 text-black">
             
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "needs-validation" }) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
