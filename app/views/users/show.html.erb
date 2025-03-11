@@ -48,10 +48,7 @@
                                 <p class="font-italic mb-0">Photographer</p>
                             </div>
                         </div>
-
-
                         <h5>Commandes passées</h5>
-
 
                         <%
 =begin%>
@@ -65,28 +62,22 @@
                         </ul> 
 <%
 =end%>
+                        <%@orders.each do |order|%>
+                            <p> Numero de la commande : <%= order.id%></p>
+                            <div class="row">
+                                <% order.order_items.each do |order_item|%>
+                                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                                    <div class="card">
+                                        <%= image_tag order_item.item.image, class: "card-img-top",alt: "Image commande" %>
+                                    </div>
+                                </div>
+                                <% end%>
+                            </div>
+                        <% end%>
 
 
-                        <div class="d-flex justify-content-between align-items-center mb-4 text-body">
-                            <p class="lead fw-normal mb-0">Recent photos</p>
-                            <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
+                        
+
                     </div>
                 </div>
             </div>
