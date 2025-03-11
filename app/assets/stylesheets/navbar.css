@@ -25,3 +25,10 @@
     /* Couleur principale au survol */
     color: black;
 }
+
+.btn-custom-delete {
+    background-color: #FF5757;
+    /* Couleur principale du logo */
+    border-color: white;
+    color: white;
+}

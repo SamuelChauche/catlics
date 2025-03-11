@@ -44,7 +44,7 @@
                 </td>
                  <!-- Colonne Actions -->
                 <td>
-                  <%= button_to "Supprimer", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" } %>
+                  <%= button_to "Supprimer", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-custom-delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" } %>
                 </td>
               </tr>
             <% end %>
@@ -58,8 +58,8 @@
     </div>
 
     <div class="text-end mt-4">
-      <%= link_to "Passer la commande", root_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to "Continuer vos achats", root_path, class: "btn btn-outline-secondary btn-lg" %>
+      <%= link_to "Passer la commande", root_path, class: "btn btn-custom-primary btn-lg" %>
+      <%= link_to "Continuer vos achats", root_path, class: "btn btn-custom-secondary btn-lg" %>
     </div>
   <% else %>
     <div class="alert alert-info">
