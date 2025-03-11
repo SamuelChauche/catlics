@@ -32,3 +32,10 @@
     border-color: white;
     color: white;
 }
+
+.btn-custom-delete:hover {
+    background-color: #350000;
+    /* Couleur principale du logo */
+    border-color: white;
+    color: white;
+}
