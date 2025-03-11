@@ -10,7 +10,6 @@
             <th scope="col">Prix unitaire </th>
             <th scope="col">Quantité</th>
             <th scope="col">Total</th>
-            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -35,18 +34,13 @@
                 <td>
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
                     <%= f.number_field :quantity, value: cart_item.quantity, min: 1, class: "form-control", style: "width: 80px;" %>
-                    <%= f.submit "Mettre à jour", class: "btn btn-sm btn-outline-secondary mt-2" %>
+                    <%= f.submit "Mettre à jour", class: "btn-custom update mt-2 mb-3" %>
+                    <%= button_to "Supprimer", cart_item_path(cart_item), method: :delete, class: "btn-custom delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" } %>
                 <% end %>
                 </td>
                   <!-- Colonne Total (Prix * Quantité) -->
                 <td>
                   <%= cart_item.item.price * cart_item.quantity %>
-                </td>
-                 <!-- Colonne Actions -->
-                <td>
-                  <%= button_to "Supprimer", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-custom-delete", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" } %>
-                </td>
-              </tr>
             <% end %>
           <% end %>
         </tbody>
@@ -57,9 +51,9 @@
       <h4>Total : <%= @cart.total_price %>€</h4>
     </div>
 
-    <div class="text-end mt-4">
-      <%= button_to "Passer la commande", orders_path, method: :post, class: "btn btn-custom-primary btn-lg" %>
-      <%= link_to "Continuer vos achats", root_path, class: "btn btn-custom-secondary btn-lg" %>
+    <div class="text-end">
+      <%= button_to "Passer la commande", orders_path, form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" %>
+      <%= link_to "Continuer vos achats", root_path, class: "btn-custom order" %>
     </div>
   <% else %>
     <div class="alert alert-info">

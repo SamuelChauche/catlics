@@ -1,29 +1,48 @@
 /* Exemple de classes personnalisées */
 .btn-custom-primary {
-    background-color: #FF5733;
-    /* Couleur principale du logo */
-    border-color: #F2E3BF;
-    color: white;
+    width: auto;
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    background-image: linear-gradient(135deg, #ffe6e6 0%, #ffc8c8 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    color: #480707;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .btn-custom-primary:hover {
-    background-color: #F2E3BF;
-    /* Une teinte plus foncée pour le hover */
-    border-color: #F2E3BF;
-    color: black
+    transform: translateY(3px);
+    box-shadow: none;
+    color: #480707;
 }
 
 .btn-custom-secondary {
-    background-color: #FFFFFF;
-    /* Couleur secondaire du logo */
-    border-color: #FF5733;
-    color: #FF5733;
+    width: auto;
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    background-image: linear-gradient(135deg, #ffa0a0 0%, #ff5757 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    color: #480707;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .btn-custom-secondary:hover {
-    background-color: #F2E3BF;
-    /* Couleur principale au survol */
-    color: black;
+    transform: translateY(3px);
+    box-shadow: none;
+    color: #480707;
 }
 
 .btn-custom-delete {
