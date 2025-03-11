@@ -1,0 +1,32 @@
+<h1>Mes Commandes</h1>
+
+<% if @orders.any? %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID de la commande</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Date de création</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.status&.capitalize %></td>
+          <td><%= number_to_currency(order.total_price) %></td>
+          <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+          <td>
+            <%= link_to 'Voir', order_path(order), class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Vous n'avez pas encore passé de commande.</p>
+<% end %>
+
+<%= link_to "Retour à la page d'accueil", root_path, class: 'btn btn-secondary' %>
