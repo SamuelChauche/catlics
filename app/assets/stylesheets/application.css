@@ -21,6 +21,10 @@
     height: 100%;
 }
 
+.card{
+    box-shadow: #c45333;
+}
+
 .img-container:hover {
     transform: scale(1.1);
 }
@@ -36,3 +40,57 @@
     display: block;
     /* Affiche le menu quand il a la classe .show */
 }
+.btn-custom-update {
+    background-color: #E78585;
+    /* Couleur principale du logo */
+    border-color: #F2E3BF;
+    color: white;
+}
+
+.btn-custom-update:hover {
+    background-color: #FF5757;
+    /* Une teinte plus foncée pour le hover */
+    border-color: #F2E3BF;
+    color: white
+}
+
+.btn-custom-cancel {
+    background-color: rgb(44, 31, 0);
+    /* Couleur principale du logo */
+    border-color: #F2E3BF;
+    color: white;
+}
+
+.btn-custom-cancel:hover {
+    background-color: #FF5757;
+    /* Une teinte plus foncée pour le hover */
+    border-color: #F2E3BF;
+    color: white
+}
+
+.btn-custom-back {
+    background-color: #E68265;
+    /* Couleur principale du logo */
+    border-color: #F2E3BF;
+    color: white;
+}
+
+.btn-custom-back:hover {
+    background-color: #c45333;
+    /* Une teinte plus foncée pour le hover */
+    border-color: #F2E3BF;
+    color: rgb(255, 255, 255)
+}
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fad1ee;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ffbaba , #FF5757);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ecc5c3 , #E78585)
+    }
+
+    
