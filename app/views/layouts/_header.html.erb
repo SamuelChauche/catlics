@@ -16,7 +16,7 @@
                 <% if user_signed_in? %>
 
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-turbo="false" aria-haspopup="true">
-                    <%= image_tag "https://i.pravatar.cc/300", alt: "Profile Photo", width: 32, height: 32, class: "rounded-circle" %>
+                    <%= image_tag "https://picsum.photos/seed/#{current_user.id}/150", alt: "Profile Photo", width: 32, height: 32, class: "rounded-circle" %>
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li>
