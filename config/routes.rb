@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :cart_items, only: [ :create, :destroy ]
+  resources :cart_items, only: [ :create, :destroy, :update ]
   resources :items, only: [:show, :create, :new] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
-  resources :carts
+  resource :cart, only: [ :show, :update, :destroy ] do
+    post "add_item/:item_id", to: "carts#add_item", as: "add_item"
+  end
+
   root "items#index"
 
 
