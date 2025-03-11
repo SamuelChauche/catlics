@@ -1,0 +1,34 @@
+<h1>Commande ##<%= @order.id %></h1>
+
+
+<p>Status :</strong> <%= @order.status&.capitalize %></p>
+<p>Date de la commande :</strong> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
+<p>Total :</strong> <%= number_to_currency(@order.total_price) %></p>
+
+<hr>
+
+<h2>Articles de la commande :</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Prix Unitaire</th>
+      <th>Quantité</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.price %></td>
+        <%# <td><%= order_item.quantity %><%#</td> %>
+        <%# <td><%= number_to_currency(order_item.quantity * order_item.price) %><%#</td> %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<%= link_to 'Retour à mes commandes', order_path, class: 'btn btn-primary' %>
+<%= button_to "Payer maintenant", checkout_create_path(order_id: @order.id, total: @order.total_price), class: "btn btn-primary", data: { turbo: false } %>
