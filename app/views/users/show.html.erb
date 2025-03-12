@@ -53,8 +53,7 @@
                                 <h5>Commande # <%= order.id %></h5>
                                 <h6>Date de la commande : <%= order.created_at.strftime("%d/%m/%Y") %></h6>
                                 <p class="order-status <%= order.status.downcase.tr(' ', '-') %>">
-                                    Statut de la commande : <%= order.status %>
-                                </p>
+                                Statut de la commande : <%= order.status %></p>
                             </div>
 
                             <div class="card-body">
