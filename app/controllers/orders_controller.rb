@@ -30,8 +30,8 @@ class OrdersController < ApplicationController
         )
       end
 
-      # # Vider le panier après la création de la commande
-      # @cart.cart_items.destroy_all
+      # Vider le panier après la création de la commande
+      @cart.cart_items.destroy_all
 
       # # Redirection vers la page de la commande
       redirect_to order_path(order), notice: "Commande créée avec succès."
