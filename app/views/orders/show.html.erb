@@ -1,6 +1,5 @@
 <h1>Commande ##<%= @order.id %></h1>
 
-
 <p>Status :</strong> <%= @order.status&.capitalize %></p>
 <p>Date de la commande :</strong> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
 <p>Total :</strong> <%= number_to_currency(@order.total_price) %></p>
@@ -30,8 +29,6 @@
   </tbody>
 </table>
 <hr>
-<%= link_to 'Retour à mes commandes', order_path, class: 'btn-custom default' %>
+<%= link_to 'Retour à mes commandes', user_path(current_user), class: 'btn btn-primary' %>
 
-<%= button_to "Payer maintenant",order_path , class: "btn btn-primary", data: { turbo: false } %>
-
-<%# //checkout_create_path(order_id: @order.id, total: @order.total_price) %>
+<%= button_to "Passer la commande",  checkout_create_path(total: 1000, event_id: 1), form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" , data: {turbo: false}%>
