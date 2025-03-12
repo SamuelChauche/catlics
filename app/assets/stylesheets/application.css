@@ -111,7 +111,8 @@
     background: -webkit-linear-gradient(to right, #ffbaba, #FF5757);
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ecc5c3, #E78585)
+    background: linear-gradient(to right, #ecc5c3, #E78585); 
+    border-radius: 10px;
 }
 
 .amount {
