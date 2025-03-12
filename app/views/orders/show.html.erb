@@ -2,10 +2,12 @@
 
 <p>Status :</strong> <%= @order.status&.capitalize %></p>
 <p>Date de la commande :</strong> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
-
-<hr>
-
-<h3>Articles de la commande :</h3>
+<p>Total :</strong> <%= number_to_currency(@order.total_price) %></p>
+<% if @order.status == "pending" %>
+  <%= button_to "Supprimer", order_path(@order), method: :delete, class: "btn-custom delete" %>
+  <hr>
+<% end %>
+<h2>Articles de la commande :</h2>
 
 <table class="table table-bordered">
   <thead>
@@ -31,5 +33,4 @@
 <h3>Total :</strong> <%= number_to_currency(@order.total_price) %></h3>
 <hr>
 
-<%= button_to "Confirmer la commande",  checkout_create_path(total: 1000, event_id: 1), form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" , data: {turbo: false}%>
-<%= link_to 'Retour à mes commandes', user_path(current_user), class: 'btn-custom default ' %>
+<%= button_to "Passer la commande",  checkout_create_path(total: @order.total_price, event_id: @order.id), form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" , data: {turbo: false}%>
