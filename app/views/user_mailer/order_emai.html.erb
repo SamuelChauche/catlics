@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @order.user.email %> et merci pour votre commande !</h1>
+    <p>
+      <p> Numero de la commande : <%= @order.id%></p>
+      <% @order.order_items.each do |order_item|%>
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="card">
+                <%= image_tag order_item.item.image, class: "card-img-top",alt: "Image commande" %>
+            </div>
+        </div>
+      <% end%>
+    </p>
+    <p>
+      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur http://catlics.fr ! </p>
+  </body>
+</html>
