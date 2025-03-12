@@ -5,13 +5,6 @@
             <a href="<%= root_path %>" class="d-flex align-items-center mb-5 mb-lg-0 link-body-emphasis text-decoration-none nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center">
                 <%= image_tag "Logocatlics.png", alt: "Catlics Logo", width: 70, class: "me-1" %>
             </a>
-
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-
             <div class="dropdown text-end">
                 <% if user_signed_in? %>
 
@@ -21,13 +14,13 @@
                 <ul class="dropdown-menu text-small">
                     <li>
                         <% if current_user.cart %>
+                    <li><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
                         <%= link_to "Cart", cart_path(current_user.cart), class: "dropdown-item" %>
                         <% else %>
                         <%= link_to "Cart", "#", class: "dropdown-item disabled" %>
                         <% end %>
                     </li>
                     
-                    <li><%= link_to "Profile", user_path(current_user), class: "dropdown-item" %></li>
                     
                     <li>
                         <hr class="dropdown-divider">

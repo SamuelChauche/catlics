@@ -50,6 +50,7 @@
                             <p>Numéro de la commande : <a href="/orders/<%= order.id %>"><%= order.id %></a></p>
 
                             <p>Date de la commande : <%= order.created_at.strftime("%d/%m/%Y")%></p>
+                            <p>Statut de la commande : <%= order.status%></p>
                             <div class="row">
                                 <% order.order_items.each do |order_item|%>
                                 <div class="col-6 col-md-4 col-lg-3 mb-4">
