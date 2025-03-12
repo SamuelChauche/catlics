@@ -167,8 +167,6 @@
     height: 30px;
 }
 
-
-
 .gradient-custom-2 {
     /* fallback for old browsers */
     background: #fad1ee;
@@ -186,11 +184,11 @@
 }
 
 
-.card-img-top {
+/* .card-img-top {
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
+} */
 
 /* Card styling */
 .card {
@@ -248,7 +246,10 @@
     /* Hauteur fixe pour uniformiser la taille des images */
     object-fit: cover;
     /* Pour que l'image couvre complètement la zone sans déformation */
+}
 
+.card-img-top:hover {
+    transform: scale(1.1);
 }
 
 .cart-text {
