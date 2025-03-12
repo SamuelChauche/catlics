@@ -1,5 +1,23 @@
-<div class="container text-center my-5"> 
-    <h1>Succès</h1>
-<p>Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p> 
-<p>Le statut de votre paiement est : <%= @payment_intent.status %>.</p> 
+<div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="card shadow-lg p-4 text-center" style="max-width: 500px;">
+        <!-- Icône de validation -->
+        <div class="text-success mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.93 10.58l-2.47-2.47-.93.94 3.4 3.4 6.6-6.6-.94-.94-5.66 5.66z" />
+            </svg>
+        </div>
+
+        <h1 class="fw-bold" style="color: #ff5757;">Paiement Réussi !</h1>
+        <p class="fs-5 mt-3">
+            Nous avons bien reçu votre paiement de
+            <span class="fw-bold amount">
+                <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>
+            </span>.
+        </p>
+        
+        <!-- Bouton de retour à la boutique -->
+        <a href="<%= root_path %>" class="btn-custom basic">
+            Retour à la boutique
+        </a>
+    </div>
 </div>
