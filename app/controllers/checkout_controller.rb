@@ -19,11 +19,9 @@ class CheckoutController < ApplicationController
       ],
       mode: "payment",
       success_url: checkout_success_url + "?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: checkout_cancel_url,
+      cancel_url: checkout_cancel_url+ "?session_id={CHECKOUT_SESSION_ID}",
       metadata: {
-        event_id: @event_id
-        
-        
+        event_id: @event_id, session_id: @session
       },
       )
     redirect_to @session.url, allow_other_host: true
@@ -45,13 +43,11 @@ class CheckoutController < ApplicationController
   end
 
   def cancel
-    # @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    # @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    # @event_id = @session.metadata.event_id
     @order = current_user.orders.find_by(id: @event_id)
-
     if @order && @order.status == "pending"
       @order.update(status: "cancelled")
+      @order.destroy_all
     end
+    redirect_to checkout_cancel_url, allow_other_host: true
   end
 end
