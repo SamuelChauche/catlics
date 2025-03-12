@@ -19,53 +19,37 @@
                         </div>
 
                         <div class="ms-3" style="margin-top: 130px; color: black">
-                            <h5><%= current_user.email %></h5>
-                            <p>Member since: <%= current_user.created_at.strftime("%B %Y") %></p>
                         </div>
                     </div>
-                    <div class="p-4 text-black bg-body-tertiary">
-                        <div class="d-flex justify-content-end text-center py-1 text-body">
+                    <div class="p-2 text-black bg-body-tertiary">
+                        <div class="d-flex justify-content-end text-center py-2 text-body">
                             <div>
-                                <p class="mb-1 h5">5</p>
-                                <p class="small text-muted mb-0">Photos</p>
+                                <p class="mb-1 h5"></p>
+                                
                             </div>
                             <div class="px-3">
-                                <p class="mb-1 h5">2</p>
-                                <p class="small text-muted mb-0">Followers</p>
+                                <p class="mb-1 h5"></p>
+                                
                             </div>
                             <div>
-                                <p class="mb-1 h5">1</p>
-                                <p class="small text-muted mb-0">Following</p>
+                                <p class="mb-1 h5"></p>
+                                
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-4 text-black">
+                    <div class="card-body p-4 text-black mt-4">
                         <div class="mb-5  text-body">
-                            <p class="lead fw-normal mb-1">About</p>
-                            <div class="p-4 bg-body-tertiary">
-                                <p class="font-italic mb-1">Web Developer</p>
-                                <p class="font-italic mb-1">Lives in New York</p>
-                                <p class="font-italic mb-0">Photographer</p>
+                            <p class="lead fw-normal mb-2">About</p>
+                            <div class="font-italic mb-1">
+                            <p class="font-italic mb-1"><%= current_user.email %></p>
+                            <p class="font-italic mb-1">Member since: <%= current_user.created_at.strftime("%B %Y") %></p>
                             </div>
                         </div>
-
-
                         <h5>Commandes passées</h5>
-
-                        <%
-=begin%>
- <ul class="list-group mb-3">
-                            <% @orders.each do |order| %>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Commande #<%= order.id %> - <%= order.created_at.strftime("%d %B %Y") %>
-                                <span class="badge bg-primary">Total: <%= number_to_currency(order.total_price) %></span>
-                            </li>
-                            <% end %>
-                        </ul> 
-<%
-=end%>
                         <%@orders.each do |order|%>
-                            <p> Numero de la commande : <%= order.id%></p>
+                            <p>Numéro de la commande : <a href="/orders/<%= order.id %>"><%= order.id %></a></p>
+
+                            <p>Date de la commande : <%= order.created_at.strftime("%d/%m/%Y")%></p>
                             <div class="row">
                                 <% order.order_items.each do |order_item|%>
                                 <div class="col-6 col-md-4 col-lg-3 mb-4">
@@ -76,10 +60,6 @@
                                 <% end%>
                             </div>
                         <% end%>
-
-
-                        
-
                     </div>
                 </div>
             </div>
