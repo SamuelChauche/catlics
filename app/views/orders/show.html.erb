@@ -31,5 +31,5 @@
 <h3>Total :</strong> <%= number_to_currency(@order.total_price) %></h3>
 <hr>
 
-<%= button_to "Passer la commande",  checkout_create_path(total: 1000, event_id: 1), form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" , data: {turbo: false}%>
+<%= button_to "Confirmer la commande",  checkout_create_path(total: 1000, event_id: 1), form: { class: "d-grid"}, method: :post, class: "btn-custom basic mb-4", role: "button" , data: {turbo: false}%>
 <%= link_to 'Retour à mes commandes', user_path(current_user), class: 'btn-custom default ' %>
