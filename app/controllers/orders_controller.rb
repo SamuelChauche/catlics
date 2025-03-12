@@ -39,4 +39,10 @@ class OrdersController < ApplicationController
       redirect_to cart_path, alert: "Erreur lors de la création de la commande."
     end
   end
+
+  def destroy
+    @order = current_user.orders.find(params[:id])
+    @order.destroy
+    redirect_to user_path(current_user), notice: "Commande supprimée."
+  end
 end
