@@ -32,14 +32,14 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @event_id = @session.metadata.event_id
-    @order = current_user.orders.find_by(id: @event_id)
+    
+    order=Order.find(@event_id)
 
-    if @order && @order.status == "pending"
-      @order.update(status: "validated")
+    if order && order.status == "pending"
+      order.update(status: "validated")
       # Vous pouvez ajouter des actions supplémentaires ici si nécessaire
     end
 
-    order=Order.find(@event_id)
     UserMailer.order_email(order).deliver_now
   end
 
