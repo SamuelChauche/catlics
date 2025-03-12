@@ -92,7 +92,7 @@
 }
 
 .delete {
-    width: 80px;
+    width: auto;
     border: 2px solid #ffa0a0;
     color: #480707;
     background-color: white;
@@ -157,7 +157,7 @@
     color: #ffffff;
 }
 
-.order-status.completed {
+.order-status.validated {
     background-color: #28a745;
     color: #ffffff;
 }
