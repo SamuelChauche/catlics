@@ -22,6 +22,7 @@ class CheckoutController < ApplicationController
       cancel_url: checkout_cancel_url,
       metadata: {
         event_id: @event_id
+        
       },
       )
     redirect_to @session.url, allow_other_host: true
@@ -31,6 +32,9 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @event_id = @session.metadata.event_id
+
+    order=Order.find(@event_id)
+    UserMailer.order_email(order).deliver_now
   end
 
   def cancel
