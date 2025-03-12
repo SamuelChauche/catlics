@@ -23,6 +23,7 @@ class CheckoutController < ApplicationController
       metadata: {
         event_id: @event_id
         
+        
       },
       )
     redirect_to @session.url, allow_other_host: true
@@ -44,9 +45,9 @@ class CheckoutController < ApplicationController
   end
 
   def cancel
-    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    @event_id = @session.metadata.event_id
+    # @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    # @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    # @event_id = @session.metadata.event_id
     @order = current_user.orders.find_by(id: @event_id)
 
     if @order && @order.status == "pending"
