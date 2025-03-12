@@ -48,7 +48,6 @@
                         <h5>Commandes passées</h5>
                         <%@orders.each do |order|%>
                             <p>Numéro de la commande : <a href="/orders/<%= order.id %>"><%= order.id %></a></p>
-
                             <p>Date de la commande : <%= order.created_at.strftime("%d/%m/%Y")%></p>
                             <div class="row">
                                 <% order.order_items.each do |order_item|%>
