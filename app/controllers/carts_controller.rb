@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart
-
+  before_action :authenticate_user!
   def show
     puts "@cart est : #{@cart.inspect}"
     @cart_items = @cart.cart_items.includes(:item)

@@ -1,3 +1,4 @@
+
 <div class="boxes-con">
   <% @items.each do |item| %>
     <div class="boxes">
@@ -8,4 +9,7 @@
   <% end %>
 </div>
 
+  <div class="d-flex justify-content-center my-4">
+  <%= will_paginate @products, class: "pagination pagination-lg" %>
+  </div>
 
