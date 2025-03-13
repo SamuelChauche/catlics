@@ -26,8 +26,20 @@
   <div class="wrapper">
     <div class="content">
 
+
+  <%= render "layouts/alert" %>
+
+  <main class="container my-4">
+    <%= yield %>
+  </main>
+
+
+  <script type="module">
+      import "toggle_cats";
+    </script>
+
       <%= render "layouts/header" %>
-      <%= render "layouts/alert" %>
+
 
       <main class="container my-4">
         <%= yield %>
