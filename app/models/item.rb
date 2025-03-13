@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
   has_many :cart_items
   has_many :carts, through: :cart_items
 

@@ -15,32 +15,39 @@ require "open-uri"
 
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF;")
 Item.destroy_all
-# ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
-
-
-siam = Breed.create!(name: "siam")
-# Ajout d'une image
-url_siam = "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=siam"
-response = URI.open(url_siam).read  # Ouvre l'URL et lit la réponse
-data_siam = JSON.parse(response)   # Analyse la réponse JSON
-
-
-1.times do |i|
-  item = Item.create!(
-    title: Faker::Creature::Cat.name,
-    description: Faker::Lorem.sentence,
-    price: rand(1..10),
-    breed: siam
-  )
 
 
 
-  # Récupère l'URL de l'image du chat
-  data_siam[i]["url"]
-  image_url = data_siam[0]["url"] # Génère une image aléatoire de chat
-  file = URI.open(image_url)
-  item.image.attach(io: file, filename: "item.jpg", content_type: "image/jpeg")
+# breeds = ["Siamois","Abyssinian","Bengal","Birman"]
+# breeds_id = ["siam","abys","beng","birm"]
+
+breeds = [["Siamois","siam"],["Abyssinian","abys"],["Bengal","beng"],["Birman","birm"]]
+
+breeds.each do |breed_array_string|
+
+  breed = Breed.create!(name: breed_array_string[0])
+  url = "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=#{breed_array_string[1]}"
+  response = URI.open(url).read
+  data = JSON.parse(response)
+
+  20.times do |i|
+    item = Item.create!(
+      title: Faker::Creature::Cat.name,
+      description: Faker::Lorem.sentence,
+      price: rand(1..10),
+      breed: breed
+    )
+    image_url = data[i]["url"]
+    file = URI.open(image_url)
+    item.image.attach(io: file, filename: "item.jpg", content_type: "image/jpeg")
+  end
+
 end
+ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
+
+
+
+
 
 # admin_user = User.create!(
 #   email: 'mail@mail.com',
