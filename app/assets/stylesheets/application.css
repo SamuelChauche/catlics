@@ -1,35 +1,62 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Style par défaut pour le body */
+body.normal {
+    background-color: white;
+    transition: all 0.5s ease-in-out; /* Transition douce entre les fonds */
 }
 
+/* Fond psychédélique animé */
+body.psychedelic {
+    background: linear-gradient(45deg, #ff0066, #ffcc00, #00ff99, #9900ff);
+    background-size: 200% 200%; /* Agrandir le fond pour jouer avec l'animation */
+    animation: morphColors 8s infinite linear, scaleMorphing 4s infinite ease-in-out;
+    
+    will-change: transform, border-radius, height, width;
+}
+
+/* Animation des couleurs (mouvement des dégradés) */
+@keyframes morphColors {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Ajout d'un effet de transformation (scale) pour le morphing */
+@keyframes scaleMorphing {
+    0%, 100% {
+        transform: scale(1); /* Taille normale */
+    }
+    50% {
+        transform: scale(1.05); /* Légère expansion au milieu */
+    }
+}
+
+body.psychedelic .boxes:hover {
+    transform: scale(0.1);
+    opacity: 100%;
+}
 .boxes-con {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-auto-flow: row dense;
     padding: 10px;
     grid-template-rows: masonry;
+    position: relative;
+    z-index: 10;
 }
 
 .boxes {
     width: auto;
     height: 100px;
-    padding: 10px;
+    padding: 0px;
     grid-row: auto / span 1;
-    opacity: 85%; 
+    opacity: 85%;
     border-radius: 5px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -40,8 +67,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    opacity: 100%; 
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.20);
+    opacity: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.30);
 }
 
 
@@ -263,26 +290,29 @@
     gap: 10px;
 }
 
-.pagination a, .pagination span {
+.pagination a,
+.pagination span {
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    border: 1px solid  #ec6c6c; 
+    border: 1px solid #ec6c6c;
     background-color: #fff;
 }
 
 .pagination a:hover {
-    background-color: #D69F7E; 
+    background-color: #D69F7E;
     color: white;
 }
 
 .pagination .current {
-    background-color:  #ff9f9f;
+    background-color: #ff9f9f;
     color: white;
     border: 1px solid #ffc8c8;
     padding: 10px 15px;
     border-radius: 5px;
 }
-.pagination a, .pagination span {
-    color: black !important; 
+
+.pagination a,
+.pagination span {
+    color: black !important;
 }
