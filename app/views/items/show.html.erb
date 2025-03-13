@@ -7,7 +7,9 @@
       <h5 class="card-title"><%= @item.title %></h5>
       <p class="card-text"><%= @item.description %></p>
       <p class="fw-bold"><%= @item.price %> €</p>
+      <% unless current_user.admin? %>
       <%= button_to 'Ajouter au panier', add_item_cart_path(item_id: @item), class: 'btn-custom basic', form: { class: "d-grid"} %>
+      <% end %>
     </div>
   </div>
 </div>
