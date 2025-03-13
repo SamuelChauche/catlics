@@ -1,71 +1,88 @@
+<div class="row d-flex justify-content-center">
+  <div class="col col-lg-9 col-xl-8">
+    <div class="row g-2">
+      <h1 class="text-center mt-3">Historique des commandes</h1>
 
-    <div class="row d-flex justify-content-center">
-      <div class="col col-lg-9 col-xl-8">
-        <div class="row g-2">
-          <h1 class="text-center mt-3">Historique des commandes</h1>
-
-          <!-- Formulaire de tri -->
-          <div class="row mb-4">
-            <div class="col">
-              <%= form_with(url: admin_orders_path, method: :get, local: true, class: "d-flex") do |form| %>
-                <div class="form-group">
-                  <%= form.label :sort_by, "Trier par" %>
-                  <%= form.select :sort_by, options_for_select([['Email', 'email'], ['Statut', 'status'], ['Date', 'date']]), {}, class: 'form-control' %>
-                </div>
-                <%= form.submit "Trier", class: 'btn-custom basic' %>
-              <% end %>
+      <!-- Formulaire de sélection du mois -->
+      <div class="row mb-4">
+        <div class="col">
+          <%= form_with(url: admin_orders_path, method: :get, local: true, class: "d-flex") do |form| %>
+            <div class="form-group">
+              <%= form.label :month, "Sélectionnez un mois" %>
+              <%= form.select :month, Date::MONTHNAMES[1..12].map { |month| [month, month] }, 
+                { selected: params[:month] }, class: 'form-control' %>
             </div>
-          </div>
-
-          <!-- Tableau des commandes -->
-          <div class="table-responsive mt-4">
-            <table class="table table-bordered">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Email</th>
-                  <th scope="col">Statut</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @orders.each do |order| %>
-                  <tr>
-                    <td><%= order.user.email %></td>
-
-                    <!-- Statut avec la classe dynamique -->
-                    <td><p class="order-status <%= order.status.downcase.tr(' ', '-') %>"><%= order.status %></p></td>
-
-                    <!-- Date de la commande -->
-                    <td><%= order.created_at.strftime("%d/%m/%Y") %></td>
-                    <!-- Total price -->
-                    <td><%= number_to_currency(order.total_price) %></td>
-                    <!-- Actions -->
-                    <td>
-                      <%= link_to "Voir", admin_order_path(order), class: "btn-custom update mt-2 mb-3" %>
-                      <%= button_to "Supprimer", admin_order_path(order), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette commande ?" }, class: "btn-custom delete" %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-          <!-- Total des commandes payées et en attente -->
-          <div class="row mt-4">
-            <div class="col text-center">
-              <h4>Total des commandes payées ce moi ci : <%= number_to_currency(@total_paid_this_month) %></h4>
-              <h4>Total des commandes en attente : <%= number_to_currency(@total_pending) %></h4>
+            <div class="form-group">
+              <%= form.label :year, "Sélectionnez une année" %>
+              <%= form.select :year, (2020..Time.now.year).to_a.reverse, 
+                { selected: params[:year] }, class: 'form-control' %>
             </div>
-          </div>
-
-          <!-- Retour à la liste des utilisateurs -->
-          <div class="text-center mt-4">
-            <%= link_to "Retour à la liste des utilisateurs", admin_users_path, class: "btn-custom basic btn-primary" %>
-          </div>
-
+            <%= form.submit "Filtrer", class: 'btn-custom basic' %>
+          <% end %>
         </div>
       </div>
+      <!-- Formulaire de tri -->
+      <div class="row mb-4">
+        <div class="col">
+          <%= form_with(url: admin_orders_path, method: :get, local: true, class: "d-flex") do |form| %>
+          <div class="form-group">
+            <%= form.label :sort_by, "Trier par" %>
+            <%= form.select :sort_by, options_for_select([['Email', 'email'], ['Statut', 'status'], ['Date', 'date']], params[:sort_by] ), class: 'form-control' %>
+          </div>
+          <%= form.submit "Trier", class: 'btn-custom basic' %>
+        <% end %>
+        </div>
+      </div>
+      <!-- Tableau des commandes -->
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Statut</th>
+              <th scope="col">Date</th>
+              <th scope="col">Total</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.user.email %></td>
+
+                <!-- Statut avec la classe dynamique -->
+                <td><p class="order-status <%= order.status.downcase.tr(' ', '-') %>"><%= order.status %></p></td>
+
+                <!-- Date de la commande -->
+                <td><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                <!-- Total price -->
+                <td><%= number_to_currency(order.total_price) %></td>
+                <!-- Actions -->
+                <td>
+                  <%= link_to "Voir", admin_order_path(order), class: "btn-custom update mt-2 mb-3" %>
+                  <%= button_to "Supprimer", admin_order_path(order), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette commande ?" }, class: "btn-custom delete" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Total des commandes payées et en attente -->
+      <div class="row mt-4">
+        <div class="col text-center">
+          <h4>Total des commandes payées : <%= number_to_currency(@total_paid_this_month) %></h4>
+          <h4>Total des commandes en attente : <%= number_to_currency(@total_pending) %></h4>
+        </div>
+      </div>
+
+      <!-- Retour à la liste des utilisateurs -->
+      <div class="text-center mt-4">
+        <%= link_to "Retour à la liste des utilisateurs", admin_users_path, class: "btn-custom basic btn-primary" %>
+      </div>
+
     </div>
   </div>
+</div>
+</div>
 </section>

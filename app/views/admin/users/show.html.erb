@@ -44,8 +44,11 @@
               </tbody>
             </table>
           </div>
-
-          <!-- Bouton retour -->
+          <div class="row mt-4">
+            <div class="col text-center">
+              <h4>Total des commandes : <%= number_to_currency(@user.orders.sum(:total_price)) %></h4>
+            </div>
+          </div>
           <div class="text-center mt-4">
             <%= link_to "Retour à la liste des utilisateurs", admin_users_path, class: "btn btn-secondary" %>
           </div>
