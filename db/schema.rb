@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_13_092748) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_13_082103) do
+  
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +40,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_092748) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "breeds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "item_id", null: false
@@ -62,6 +69,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_092748) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "breed_id"
+    t.index ["breed_id"], name: "index_items_on_breed_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -102,6 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_13_092748) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
   add_foreign_key "carts", "users"
+  add_foreign_key "items", "breeds"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

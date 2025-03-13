@@ -23,15 +23,20 @@
   </head>
 
 <body>
-  <%= render "layouts/header" %>
+  <div class="wrapper">
+    <div class="content">
+      <%= render "layouts/header" %>
+      <%= render "layouts/alert" %>
 
-  <%= render "layouts/alert" %>
-
-  <main class="container my-4">
-    <%= yield %>
-  </main>
-
-  <%= render "layouts/footer" %>
-
+      <main class="container my-4">
+        <%= yield %>
+      </main>
+    </div>
+    <footer class="footer">
+    <%= render "layouts/footer" %>
+    </footer>
+  </div>
 </body>
+
+
 </html>
