@@ -15,22 +15,17 @@ require "open-uri"
 
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF;")
 Item.destroy_all
-
-
-
-# breeds = ["Siamois","Abyssinian","Bengal","Birman"]
-# breeds_id = ["siam","abys","beng","birm"]
+Breed.destroy_all
 
 breeds = [["Siamois","siam"],["Abyssinian","abys"],["Bengal","beng"],["Birman","birm"]]
 
 breeds.each do |breed_array_string|
-
   breed = Breed.create!(name: breed_array_string[0])
   url = "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=#{breed_array_string[1]}"
   response = URI.open(url).read
   data = JSON.parse(response)
 
-  20.times do |i|
+  10.times do |i|
     item = Item.create!(
       title: Faker::Creature::Cat.name,
       description: Faker::Lorem.sentence,
@@ -46,15 +41,9 @@ end
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
 
 
-
-
-
 # admin_user = User.create!(
 #   email: 'mail@mail.com',
 #   password: 'mailmail',
 #   password_confirmation: 'mailmail'
 # )
 
-# puts "Utilisateur admin créé avec succès :"
-# puts "Email: #{admin_user.email}"
-# puts "Mot de passe: mailmail"
