@@ -1,0 +1,67 @@
+.btn-admin {
+    width: auto;
+    height: 30px;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-admin:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+    color: #480707;
+
+}
+
+.btn-admin:active {
+    background-image: linear-gradient(135deg, #ec6c6c 0%, #df3e3e 100%);
+}
+
+.default {
+    background-image: linear-gradient(135deg, #ffe6e6 0%, #ffc8c8 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    color: #480707
+}
+
+.order {
+    background-image: linear-gradient(135deg, #ffe6e6 0%, #ffc8c8 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    color: #480707;
+}
+
+.basic {
+    background-image: linear-gradient(135deg, #ffa0a0 0%, #ff5757 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+}
+
+.update {
+    background-image: linear-gradient(135deg, #ffe1e1 0%, #ffa0a0 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    font-size: 12px;
+    height: 30px;
+}
+
+.cancel {
+    border: 3px solid #ffa0a0;
+    color: #480707;
+    background-color: white;
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    font-size: 12px;
+}
+
+.delete {
+    width: auto;
+    border: 2px solid #ffa0a0;
+    color: #480707;
+    background-color: white;
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.2);
+    font-size: 12px;
+    height: 30px;
+}
