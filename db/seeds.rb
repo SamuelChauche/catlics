@@ -8,33 +8,46 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
+
 require "open-uri"
 
-20.times do
+
+ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF;")
+Item.destroy_all
+# ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
+
+
+siam = Breed.create!(name: "siam")
+# Ajout d'une image
+url_siam = "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=siam"
+response = URI.open(url_siam).read  # Ouvre l'URL et lit la réponse
+data_siam = JSON.parse(response)   # Analyse la réponse JSON
+
+
+1.times do |i|
   item = Item.create!(
     title: Faker::Creature::Cat.name,
     description: Faker::Lorem.sentence,
-    price: rand(1..10)
+    price: rand(1..10),
+    breed: siam
   )
 
-  # Ajout d'une image
-  url = "https://api.thecatapi.com/v1/images/search"
-  response = URI.open(url).read  # Ouvre l'URL et lit la réponse
-  data = JSON.parse(response)   # Analyse la réponse JSON
+
 
   # Récupère l'URL de l'image du chat
-  data[0]["url"]
-  image_url = data[0]["url"] # Génère une image aléatoire de chat
+  data_siam[i]["url"]
+  image_url = data_siam[0]["url"] # Génère une image aléatoire de chat
   file = URI.open(image_url)
   item.image.attach(io: file, filename: "item.jpg", content_type: "image/jpeg")
 end
 
-admin_user = User.create!(
-  email: 'mail@mail.com',
-  password: 'mailmail',
-  password_confirmation: 'mailmail'
-)
+# admin_user = User.create!(
+#   email: 'mail@mail.com',
+#   password: 'mailmail',
+#   password_confirmation: 'mailmail'
+# )
 
-puts "Utilisateur admin créé avec succès :"
-puts "Email: #{admin_user.email}"
-puts "Mot de passe: mailmail"
+# puts "Utilisateur admin créé avec succès :"
+# puts "Email: #{admin_user.email}"
+# puts "Mot de passe: mailmail"
