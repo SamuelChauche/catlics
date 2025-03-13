@@ -5,7 +5,11 @@
   line-height: 0;
   perspective: 400px;
   font-size: var(--size);
+  margin-top: 20px; /* Espacement au-dessus du toggle */
 }
+
+
+
 
 .checkbox-wrapper-5 .check input[type="checkbox"],
   .checkbox-wrapper-5 .check label,
