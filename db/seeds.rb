@@ -6,7 +6,7 @@ ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF;")
 Item.destroy_all
 Breed.destroy_all
 
-breeds = [["Siamois","siam"],["Abyssinian","abys"],["Bengal","beng"],["Birman","birm"]]
+breeds = [ [ "Siamois", "siam" ], [ "Abyssinian", "abys" ], [ "Bengal", "beng" ], [ "Birman", "birm" ] ]
 
 breeds.each do |breed_array_string|
   breed = Breed.create!(name: breed_array_string[0])
@@ -25,7 +25,6 @@ breeds.each do |breed_array_string|
     file = URI.open(image_url)
     item.image.attach(io: file, filename: "item.jpg", content_type: "image/jpeg")
   end
-
 end
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
 

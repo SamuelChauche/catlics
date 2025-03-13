@@ -25,6 +25,7 @@
                         </li>
                         <% end %>
                     <!-- Profile -->
+                    <% unless current_user.admin? %>
                     <li>
                         <%= link_to user_path(current_user), class: "dropdown-item d-flex align-items-center gap-2" do %>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -33,7 +34,6 @@
                         Profile
                         <% end %>
                     </li>
-
                     <!-- Cart -->
                     <li>
                         <% if current_user.cart %>
@@ -52,7 +52,7 @@
                         </a>
                         <% end %>
                     </li>
-
+                    <% end %>
                     <!-- Divider -->
                     <li>
                         <hr class="dropdown-divider">
