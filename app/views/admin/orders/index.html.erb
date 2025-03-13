@@ -25,6 +25,7 @@
                   <th scope="col">Email</th>
                   <th scope="col">Statut</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Total</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -38,16 +39,24 @@
 
                     <!-- Date de la commande -->
                     <td><%= order.created_at.strftime("%d/%m/%Y") %></td>
-
+                    <!-- Total price -->
+                    <td><%= number_to_currency(order.total_price) %></td>
                     <!-- Actions -->
                     <td>
                       <%= link_to "Voir", admin_order_path(order), class: "btn-custom update mt-2 mb-3" %>
-                      <%= link_to "Supprimer", admin_order_path(order), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette commande ?" }, class: "btn-custom delete" %>
+                      <%= button_to "Supprimer", admin_order_path(order), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette commande ?" }, class: "btn-custom delete" %>
                     </td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
+          </div>
+          <!-- Total des commandes payées et en attente -->
+          <div class="row mt-4">
+            <div class="col text-center">
+              <h4>Total des commandes payées ce moi ci : <%= number_to_currency(@total_paid_this_month) %></h4>
+              <h4>Total des commandes en attente : <%= number_to_currency(@total_pending) %></h4>
+            </div>
           </div>
 
           <!-- Retour à la liste des utilisateurs -->

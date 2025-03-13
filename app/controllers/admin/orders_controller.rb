@@ -12,14 +12,27 @@ class Admin::OrdersController < ApplicationController
 
     # Tri par date
     if params[:sort_by] == "date"
-      @orders = @orders.order(created_at: :desc)  # Tri par date, du plus récent au plus ancien
-    elsif params[:sort_by] == "status"
-      @orders = @orders.order(status: :asc)  # Tri par statut (en ordre alphabétique par défaut)
+      @orders = @orders.order(created_at: :desc)
+      @orders = @orders.order(status: :asc)
     end
+
+    start_of_month = Time.now.beginning_of_month
+    end_of_month = Time.now.end_of_month
+    @total_paid_this_month = Order.where(status: "validated")
+                                  .where(created_at: start_of_month..end_of_month)
+                                  .sum(:total_price)
+
+    @total_pending = Order.where(status: "pending").sum(:total_price)
   end
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items.includes(:item)
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to admin_orders_path, notice: "Commande supprimé avec succès."
   end
 
   private
