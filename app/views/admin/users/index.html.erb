@@ -1,0 +1,38 @@
+
+        <div class="row d-flex justify-content-center">
+            <div class="col col-lg-9 col-xl-8">
+                <div class="row g-2">
+                
+                    <h1 class="text-center mt-3">Liste des utilisateurs</h1>
+                    
+                    <div class="table-responsive mt-4">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Rôle</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @users.each do |user| %>
+                                    <tr>
+                                        <td><%= user.email %></td>
+                                        <td><%= user.role %></td>
+                                        <td>
+                                            <%= link_to "Voir", admin_user_path(user), class: "btn-custom update mt-2 mb-3" %> 
+                                            <%= link_to "Supprimer", admin_user_path(user), method: :delete, class: "btn-custom delete" ,data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn-custom basic" %>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bouton pour voir toutes les commandes passées -->
+                    <div class="mt-3">
+                        <%= link_to "Voir toutes les commandes passées", admin_orders_path, class: "btn-custom basic btn-primary" %>
+                    </div>
+                </div>
+            </div>
+</section>

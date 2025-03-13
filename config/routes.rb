@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   root "items#index"
 
   devise_for :users
+
+  namespace :admin do
+      resources :users, only: [ :show, :index ]
+      resources :orders, only: [ :index, :show, :destroy  ]
+  end
+
   resources :users, only: [ :show ]
+
   resources :cart_items, only: [ :create, :destroy, :update ]
 
   resources :items, only: [ :show, :create, :new, :index ]
