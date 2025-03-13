@@ -8,17 +8,83 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.boxes-con {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-auto-flow: row dense;
+    padding: 10px;
+    grid-template-rows: masonry;
+}
+
+.boxes {
+    width: auto;
+    height: 100px;
+    padding: 10px;
+    grid-row: auto / span 1;
+    opacity: 85%; 
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.boxes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 100%; 
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.20);
+}
+
+
+.boxes:nth-child(odd) {
+    width: 100%;
+    grid-row: auto / span 3;
+    height: 300px;
+    background: white;
+    background-blend-mode: color;
+}
+
+.boxes:nth-child(even) {
+    width: 100%;
+    grid-row: auto / span 2;
+    height: 200px;
+    background: white;
+}
+
+.boxes:nth-child(4n) {
+    width: 100%;
+    background: white;
+
+}
+
+.boxes:hover {
+    transform: scale(1.1);
+    opacity: 100%;
+}
+
+.boxes:nth-child(7) {
+    width: 100%;
+    background: white;
+}
+
+/* For a responsive layout, make use of the media snippet and increase the grid-template-columns property */
+
 .img-container {
     width: 100%;
     height: 200px;
     overflow: hidden;
     transition: transform 0.3s ease;
-}
-
-
-
-.img-container:hover {
-    transform: scale(1.1);
+    box-shadow: 0 20px 30px -6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .dropdown-menu {
@@ -101,8 +167,6 @@
     height: 30px;
 }
 
-
-
 .gradient-custom-2 {
     /* fallback for old browsers */
     background: #fad1ee;
@@ -111,7 +175,8 @@
     background: -webkit-linear-gradient(to right, #ffbaba, #FF5757);
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ecc5c3, #E78585)
+    background: linear-gradient(to right, #ecc5c3, #E78585);
+    border-radius: 10px;
 }
 
 .amount {
@@ -119,11 +184,11 @@
 }
 
 
-.card-img-top {
+/* .card-img-top {
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
+} */
 
 /* Card styling */
 .card {
@@ -181,10 +246,43 @@
     /* Hauteur fixe pour uniformiser la taille des images */
     object-fit: cover;
     /* Pour que l'image couvre complètement la zone sans déformation */
+}
 
+.card-img-top:hover {
+    transform: scale(1.1);
 }
 
 .cart-text {
     font-size: 0.8rem;
     /* Réduit la taille du texte */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination a, .pagination span {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid  #ec6c6c; 
+    background-color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #D69F7E; 
+    color: white;
+}
+
+.pagination .current {
+    background-color:  #ff9f9f;
+    color: white;
+    border: 1px solid #ffc8c8;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.pagination a, .pagination span {
+    color: black !important; 
 }
