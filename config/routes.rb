@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ]
   resources :cart_items, only: [ :create, :destroy, :update ]
 
-  resources :items, only: [ :show, :create, :new ]
+  resources :items, only: [ :show, :create, :new, :index ]
 
   resource :cart, only: [ :show, :update, :destroy ] do
     post "add_item/:item_id", to: "carts#add_item", as: "add_item"
