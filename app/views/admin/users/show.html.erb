@@ -1,0 +1,59 @@
+
+    <div class="row d-flex justify-content-center">
+      <div class="col col-lg-9 col-xl-8">
+        <div class="row g-2">
+          <h1 class="text-center mt-3">Détails de l'utilisateur</h1>
+
+          <!-- Informations sur l'utilisateur -->
+          <div class="row mb-4">
+            <div class="col">
+              <p><strong>Email :</strong> <%= @user.email %></p>
+              <p><strong>Rôle :</strong> <%= @user.role %></p>
+            </div>
+          </div>
+
+          <!-- Commandes de l'utilisateur -->
+          <h2>Commandes de l'utilisateur</h2>
+          <div class="table-responsive mt-4">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID de la commande</th>
+                  <th scope="col">Date de la commande</th>
+                  <th scope="col">Statut</th>
+                  <th scope="col">Articles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @user.orders.each do |order| %>
+                  <tr>
+                    <td><%= order.id %></td>
+                    <td><%= order.created_at.strftime("%d/%m/%Y") %></td>
+                    <td><p class="order-status <%= order.status.downcase.tr(' ', '-') %>"><%= order.status %></p></td>
+                    <td>
+                      <ul>
+                        <% order.order_items.each do |order_item| %>
+                          <li>
+                            <strong><%= order_item.item.title %></strong> - Quantité: <%= order_item.quantity %> - Prix: <%= number_to_currency(order_item.item.price) %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="row mt-4">
+            <div class="col text-center">
+              <h4>Total des commandes : <%= number_to_currency(@user.orders.sum(:total_price)) %></h4>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <%= link_to "Retour à la liste des utilisateurs", admin_users_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

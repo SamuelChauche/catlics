@@ -1,0 +1,55 @@
+
+    <div class="row d-flex justify-content-center">
+      <div class="col col-lg-9 col-xl-8">
+        <div class="row g-2">
+          <h1 class="text-center mt-3">Détails de la commande #<%= @order.id %></h1>
+
+          <!-- Informations sur la commande -->
+          <div class="row mb-4">
+            <div class="col">
+              <p>
+                <strong>Utilisateur :</strong> <%= @order.user.email %><br>
+                <strong>Date de commande :</strong> <%= @order.created_at.strftime("%d/%m/%Y") %><br>
+                <strong>Status :</strong>
+                <p class="order-status <%= @order.status.downcase.tr(' ', '-') %>"><%= @order.status %></p>
+              </p>
+            </div>
+          </div>
+
+          <!-- Tableau des articles dans la commande -->
+          <h2>Articles dans cette commande</h2>
+          <div class="table-responsive mt-4">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Nom de l'article</th>
+                  <th scope="col">Quantité</th>
+                  <th scope="col">Prix unitaire</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order_items.each do |order_item| %>
+                  <tr>
+                    <td><%= order_item.item.title %></td>
+                    <td><%= order_item.quantity %></td>
+                    <td><%= number_to_currency(order_item.item.price) %></td>
+                    <td><%= number_to_currency(order_item.total_price) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Total de la commande -->
+          <h3>Total de la commande : <%= number_to_currency(@order.total_price) %></h3>
+
+          <!-- Bouton retour à la liste des commandes -->
+          <div class="text-center mt-4">
+            <%= link_to 'Retour à la liste des commandes', admin_orders_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -23,7 +23,9 @@
   </head>
 
 <body>
-  <%= render "layouts/header" %>
+  <div class="wrapper">
+    <div class="content">
+
 
   <%= render "layouts/alert" %>
 
@@ -31,10 +33,22 @@
     <%= yield %>
   </main>
 
-  <%= render "layouts/footer" %>
+
   <script type="module">
       import "toggle_cats";
     </script>
 
+      <%= render "layouts/header" %>
+
+
+      <main class="container my-4">
+        <%= yield %>
+      </main>
+    </div>
+    <footer class="footer">
+    <%= render "layouts/footer" %>
+    </footer>
+  </div>
 </body>
+
 </html>

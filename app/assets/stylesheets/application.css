@@ -50,7 +50,6 @@ body.psychedelic .boxes:hover {
     position: relative;
     z-index: 10;
 }
-
 .boxes {
     width: auto;
     height: 100px;
@@ -61,7 +60,6 @@ body.psychedelic .boxes:hover {
     overflow: hidden;
     transition: transform 0.3s ease;
 }
-
 .boxes img {
     width: 100%;
     height: 100%;
@@ -70,8 +68,6 @@ body.psychedelic .boxes:hover {
     opacity: 100%;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.30);
 }
-
-
 .boxes:nth-child(odd) {
     width: 100%;
     grid-row: auto / span 3;
@@ -79,25 +75,20 @@ body.psychedelic .boxes:hover {
     background: white;
     background-blend-mode: color;
 }
-
 .boxes:nth-child(even) {
     width: 100%;
     grid-row: auto / span 2;
     height: 200px;
     background: white;
 }
-
 .boxes:nth-child(4n) {
     width: 100%;
     background: white;
-
 }
-
 .boxes:hover {
     transform: scale(1.1);
     opacity: 100%;
 }
-
 .boxes:nth-child(7) {
     width: 100%;
     background: white;
@@ -194,6 +185,8 @@ body.psychedelic .boxes:hover {
     height: 30px;
 }
 
+
+
 .gradient-custom-2 {
     /* fallback for old browsers */
     background: #fad1ee;
@@ -279,6 +272,7 @@ body.psychedelic .boxes:hover {
     transform: scale(1.1);
 }
 
+/* footer en bas*/
 .cart-text {
     font-size: 0.8rem;
     /* Réduit la taille du texte */
@@ -312,7 +306,36 @@ body.psychedelic .boxes:hover {
     border-radius: 5px;
 }
 
-.pagination a,
-.pagination span {
-    color: black !important;
+.pagination a, .pagination span {
+    color: black !important; 
 }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content {
+flex: 1;
+}
+.footer {
+background: #f8f9fa;
+padding: 10px;
+text-align: center;
+}
+
+/* formulaire deroulant des races de chats*/
+
+.dropdown-form {
+    max-height: 35px; /* Hauteur initiale */
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+  }
+  
+  .dropdown-container:hover .dropdown-form {
+    min-height: 80px;
+  }
+ 
