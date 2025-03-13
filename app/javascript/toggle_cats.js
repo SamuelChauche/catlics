@@ -25,13 +25,14 @@ const psychedelicCatImages = [
     "https://c.tenor.com/s_FJJovI_1UAAAAd/tenor.gif",
 ];
 
-document.addEventListener("turbo:load", () => { // Pour Turbo Rails
+document.addEventListener("turbo:load", () => {
+    // Pour Turbo Rails
     const toggle = document.getElementById("toggle-cats");
     const body = document.body; // Référence au body
 
     // Récupérer l'état initial sauvegardé dans LocalStorage
     const savedState = localStorage.getItem("toggle-cats-state");
-    toggle.checked = (savedState === "true");
+    toggle.checked = savedState === "true";
 
     // Appliquer automatiquement l'état du toggle aux images visibles et au fond
     applyToggleStateToImages(toggle.checked);
@@ -67,7 +68,7 @@ function applyToggleStateToImages(isChecked) {
             // Restaurer l'image originale
             const originalImage = image.dataset.original;
             if (originalImage) {
-                image.src = originalImage;  // Retourne à l'image de départ
+                image.src = originalImage; // Retourne à l'image de départ
             } else {
                 console.error("Image originale non trouvée pour cet élément !");
             }
@@ -75,35 +76,41 @@ function applyToggleStateToImages(isChecked) {
     });
 }
 
+// Sélectionner la checkbox et le conteneur .check
+const checkbox = document.getElementById("toggle-cats");
+const checkElement = document.querySelector(".checkbox-wrapper-5 .check");
+
+
+
 function updateBodyBackground(isChecked) {
     const body = document.body;
 
     if (isChecked) {
-        body.classList.add("psychedelic"); 
+        body.classList.add("psychedelic");
         body.classList.remove("normal");
+        checkElement.style.opacity = "1"; // Opacité 100%
+        
     } else {
         body.classList.add("normal"); // Restaure le fond
         body.classList.remove("psychedelic");
+        checkElement.style.opacity = "0.1"; // Opacité 10%
     }
 }
 
 // Fonction : Sélectionner un GIF unique en fonction de l'image et de la page
 function getGifUrlForImage(image, index) {
-    const pageOffset = parseInt(new URLSearchParams(window.location.search).get("page") || 1);
+    const pageOffset = parseInt(
+        new URLSearchParams(window.location.search).get("page") || 1
+    );
     const adjustedIndex = index + (pageOffset - 1) * 10; // Permet de rendre les GIF différents entre les pages
     return psychedelicCatImages[adjustedIndex % psychedelicCatImages.length];
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const morphingElement = document.querySelector('.morphing-color');
-    const toggleButton = document.getElementById('toggle-morph');
+    const morphingElement = document.querySelector(".morphing-color");
+    const toggleButton = document.getElementById("toggle-morph");
 
-    toggleButton.addEventListener('click', () => {
-        morphingElement.classList.toggle('morphing-color'); // Active/désactive le morphing
+    toggleButton.addEventListener("click", () => {
+        morphingElement.classList.toggle("morphing-color"); // Active/désactive le morphing
     });
 });
-
-
-
-

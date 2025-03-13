@@ -32,6 +32,12 @@ ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = ON;")
 admin_user = User.create!(
   email: 'mail@mail.com',
   password: 'mailmail',
-
   role: "admin"
 )
+
+
+User.create!(email: 'joe@joe.com', password: 'joejoe')
+User.create!(email: 'luc@joe.com', password: 'joejoe')
+User.create!(email: 'tom@joe.com', password: 'joejoe')
+User.create!(email: 'sam@joe.com', password: 'joejoe')
+User.create!(email: 'titi@joe.com', password: 'joejoe')

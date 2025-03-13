@@ -1,29 +1,35 @@
-<div class="dropdown-container">
-  <div class="dropdown-form">
+<div class="dropdown-container mb-4">
+  <div>
     <h4>Option</h4>
-    <%= form_with url: items_path, method: :get, local: true do %>
-      <label>
-        <%= check_box_tag "options[]", "Siamois", params[:options]&.include?("Siamois") %>
-        Siamois
-      </label>
-      <label>
-        <%= check_box_tag "options[]", "Abyssinian", params[:options]&.include?("Abyssinian") %>
-        Abyssinian
-      </label>
-      <label>
-        <%= check_box_tag "options[]", "Bengal", params[:options]&.include?("Bengal") %>
-        Bengal
-      </label>
-      <label>
-        <%= check_box_tag "options[]", "Birman", params[:options]&.include?("Birman") %>
-        Birman
-      </label>
-      <label>
-        <%= select_tag :sort, options_for_select([["Prix croissant", "price_asc"], ["Prix décroissant", "price_desc"], ["Date", "date"], ["Aléatoir", "random"]], selected: params[:sort]) %>
-      </label>
-      <%= submit_tag "Filtrer" %>
-    <% end %>
-  
-
+    <form action="/items" method="get">
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <label class="form-check-label d-flex align-items-center gap-1">
+          <input type="checkbox" name="options[]" value="Siamois" class="form-check-input">
+          Siamois
+        </label>
+        <label class="form-check-label d-flex align-items-center gap-1">
+          <input type="checkbox" name="options[]" value="Abyssinian" class="form-check-input">
+          Abyssinian
+        </label>
+        <label class="form-check-label d-flex align-items-center gap-1">
+          <input type="checkbox" name="options[]" value="Bengal" class="form-check-input">
+          Bengal
+        </label>
+        <label class="form-check-label d-flex align-items-center gap-1">
+          <input type="checkbox" name="options[]" value="Birman" class="form-check-input">
+          Birman
+        </label>
+        <label class="d-flex align-items-center gap-2">
+          <select name="sort" class="form-select">
+            <option value="price_asc">Prix croissant</option>
+            <option value="price_desc">Prix décroissant</option>
+            <option value="date">Date</option>
+            <option value="random">Aléatoire</option>
+          </select>
+        </label>
+        <input type="submit" name="commit" value="Filtrer" class="btn-custom default">
+      </div>
+    </form>
   </div>
 </div>
+

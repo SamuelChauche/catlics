@@ -20,7 +20,7 @@
                                         <td><%= user.email %></td>
                                         <td><%= user.role %></td>
                                         <td>
-                                            <%= link_to "Voir", admin_user_path(user), class: "btn-custom update mt-2 mb-3" %> 
+                                            <%= link_to "Voir", admin_user_path(user), class: "btn-custom basic mt-2 mb-3" %> 
                                             <%= link_to "Supprimer", admin_user_path(user), method: :delete, class: "btn-custom delete" ,data: { confirm: "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" }, class: "btn-custom basic" %>
                                         </td>
                                     </tr>
