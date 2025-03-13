@@ -18,7 +18,12 @@
         <%= check_box_tag "options[]", "Birman", params[:options]&.include?("Birman") %>
         Birman
       </label>
+      <label>
+        <%= select_tag :sort, options_for_select([["Prix croissant", "price_asc"], ["Prix décroissant", "price_desc"], ["Date", "date"], ["Aléatoir", "random"]], selected: params[:sort]) %>
+      </label>
       <%= submit_tag "Filtrer" %>
     <% end %>
+  
+
   </div>
 </div>
