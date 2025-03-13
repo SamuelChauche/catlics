@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def show
     # Vérification que la commande existe pour l'utilisateur
     @order = current_user.orders.find(params[:id])
+    unless @order.user == current_user
+      redirect_to root_path, alert: "Accès interdit."
+    end
   end
   def index
     @orders = current_user.orders

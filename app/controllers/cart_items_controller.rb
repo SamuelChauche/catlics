@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @cart = current_user.cart
     @item_id = Item.find(params[:id])
