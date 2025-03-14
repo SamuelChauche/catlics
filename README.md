@@ -1,7 +1,3 @@
-Voici un exemple de **README.md** bien structuré pour votre projet de site de vente de photos de chatons :
-
----
-
 # 🐱 Cat-Lics - Site de Vente de Photos de Chats Adorables 🐾
 
 Bienvenue sur **Cat-Lics** ! Il s'agit d'un site de vente en ligne où vous pouvez découvrir et acheter de superbes photos de chatons pour illuminer votre journée. ❤️
