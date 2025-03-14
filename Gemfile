@@ -10,7 +10,7 @@ gem "faker"
 gem "stripe"
 
 gem "dotenv"
-gem "will_paginate", "~> 3.3"
+gem "will_paginate", "~> 4.0"
 gem "will_paginate-bootstrap", "~> 1.0"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
